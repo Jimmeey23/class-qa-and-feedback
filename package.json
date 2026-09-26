@@ -1,0 +1,23 @@
+{
+  "name": "physique57-assessment-hub",
+  "private": true,
+  "type": "module",
+  "workspaces": ["apps/*", "packages/*"],
+  "scripts": {
+    "dev": "concurrently -n api,powercycle,fitlab -c blue,magenta,cyan \"npm run dev:server\" \"npm run dev -w @project/feedback-tracker-pro\" \"npm run dev -w @project/trainer-qa-assessment-fit-lab\"",
+    "dev:server": "node --watch server/index.mjs",
+    "build": "npm run build -w @project/feedback-tracker-pro && npm run build -w @project/trainer-qa-assessment-fit-lab",
+    "start": "node server/index.mjs",
+    "check": "npm run build && node --check server/index.mjs"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.57.4",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "helmet": "^8.1.0",
+    "morgan": "^1.10.1",
+    "ws": "^8.18.3"
+  },
+  "devDependencies": { "concurrently": "^9.2.1" }
+}

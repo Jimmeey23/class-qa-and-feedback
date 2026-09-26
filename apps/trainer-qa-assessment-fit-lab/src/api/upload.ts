@@ -1,0 +1,1 @@
+export async function uploadFile({ data, filename }: { data: Blob; filename: string }) { const response = await fetch('/api/upload', { method: 'POST', headers: { 'content-type': data.type || 'application/octet-stream', 'x-file-name': filename }, body: data }); if (!response.ok) throw new Error('Upload failed'); return response.json() as Promise<{ fileUrl: string }>; }
